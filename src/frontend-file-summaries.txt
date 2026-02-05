@@ -1,0 +1,5 @@
+{
+  "frontend/src/App.tsx": "Main Game of Life component implementing a 200×200 grid with Canvas rendering, start/pause/reset controls, runtime-adjustable speed controls (Faster/Slower that halve/double the tick interval), zoom functionality, and Conway's rules with a live interval readout.",
+  "frontend/src/index.css": "Global styles with a minimalist monochrome OKLCH color system optimized for high-contrast technical visualization, supporting both light and dark modes.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder file as the Game of Life simulation is entirely client-side with no backend queries required."
+}

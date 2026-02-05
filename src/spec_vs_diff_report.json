@@ -1,0 +1,22 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-05T22:25:09.849Z",
+  "summary": "The diff indicates implementation of runtime-adjustable simulation speed via a tickInterval state/ref in App.tsx, along with UI speed controls and a speed readout per the repository summary metadata. Due to truncation of App.tsx, the exact rendered labels/readout text cannot be fully verified from the provided snippet.",
+  "missing_requirements": [],
+  "hallucinated_features": [
+    {
+      "description": "Added a Slider UI import that is not part of the requested Faster/Slower controls (no slider requirement in the BuildRequest).",
+      "reason": "BuildRequest only asks for two controls (Faster/Slower) plus a readout; a slider is not requested. The diff snippet shows Slider being imported, but the truncated content does not show it being required by REQ-13/15.",
+      "evidence": [
+        "frontend/src/App.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.63,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/App.tsx",
+    "project_state.json"
+  ]
+}

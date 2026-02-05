@@ -1,0 +1,179 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "Build a fullscreen 200x200 grid-based (Game of Life-like) animation with black grid lines, white cells, two states (live=black, dead=white), 50 randomly placed live cells in the center at start, reset regenerating 3000 randomly placed live cells in the center, start/pause/reset controls, zoom in/out, generation updates every 0.5s using standard Life birth/survival/death rules, and add speed up/down controls that double/halve the update interval.",
+  "architectural_notes": [
+    "UI requires start/pause/reset controls and zoomable viewport.",
+    "2D cellular automaton (Game of Life-like) simulation on a 200x200 grid with a fixed 0.5s tick rate.",
+    "Start state spawns 50 live cells randomly within a central region; reset spawns 3000 live cells randomly within the central region.",
+    "Add UI controls to accelerate/decelerate simulation speed by multiplying the tick interval by 0.5x/2x (starting from 0.5s)."
+  ],
+  "known_issues": [
+    "Build/deployment attempts are failing (deployment didn't complete / AI couldn't process request)."
+  ],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-fullscreen-view-that-renders-a-1000-1000-square-grid-with-black-grid-lines-and-white-cell-backgrounds-where-each-cell-has-two-visual-states-live-cells-rendered-black-and-dead-cells-rendered-white",
+      "title": "Create a fullscreen view that renders a 1000×1000 square grid with black grid lines and white cell backgrounds, where each cell has two visual states: live cells rendered black and dead cells rendered white.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-simulation-initialization-and-reset-behavior-such-that-exactly-3000-live-cells-are-randomly-distributed-within-the-central-region-of-the-1000-1000-grid-with-all-other-cells-dead",
+      "title": "Implement simulation initialization and reset behavior such that exactly 3000 live cells are randomly distributed within the central region of the 1000×1000 grid, with all other cells dead.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-ui-controls-start-begin-running-the-simulation-pause-stop-advancing-generations-while-keeping-the-current-state-displayed-and-reset-generate-a-new-random-initial-state-of-3000-live-cells-in-the-central-region",
+      "title": "Add UI controls: Start (begin running the simulation), Pause (stop advancing generations while keeping the current state displayed), and Reset (generate a new random initial state of 3000 live cells in the central region).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-advance-the-simulation-automatically-every-0-5-seconds-producing-a-new-generation-by-applying-exactly-these-rules-to-each-cell-based-on-its-8-neighbors-1-birth-a-dead-cell-with-exactly-3-live-neighbors-becomes-live-2-survival-a-live-cell-with-2-or-3-live-neighbors-stays-live-3-death-a-live-cell-with-0-or-1-live-neighbors-dies-loneliness-and-a-live-cell-with-more-than-3-live-neighbors-dies-overpopulation-all-other-cases-result-in-a-dead-cell",
+      "title": "Advance the simulation automatically every 0.5 seconds, producing a new generation by applying exactly these rules to each cell based on its 8 neighbors: (1) Birth: a dead cell with exactly 3 live neighbors becomes live; (2) Survival: a live cell with 2 or 3 live neighbors stays live; (3) Death: a live cell with 0 or 1 live neighbors dies (loneliness) and a live cell with more than 3 live neighbors dies (overpopulation). All other cases result in a dead cell.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-zoom-in-out-functionality-for-the-grid-view-so-the-user-can-zoom-into-the-cells-and-zoom-back-out-while-the-simulation-is-running-or-paused",
+      "title": "Provide zoom in/out functionality for the grid view so the user can zoom into the cells and zoom back out while the simulation is running or paused.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-coherent-visual-theme-for-the-ui-controls-layout-that-fits-a-minimalist-high-contrast-technical-simulation-style-using-neutral-tones-black-white-gray-consistent-typography-and-clear-control-hierarchy",
+      "title": "Apply a coherent visual theme for the UI (controls + layout) that fits a minimalist, high-contrast technical simulation style using neutral tones (black/white/gray), consistent typography, and clear control hierarchy.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-change-the-rendered-simulation-grid-from-1000-1000-to-200-200-keeping-the-fullscreen-layout-black-grid-lines-white-cell-backgrounds-and-the-two-cell-states-live-black-dead-white",
+      "title": "Change the rendered simulation grid from 1000×1000 to 200×200, keeping the fullscreen layout, black grid lines, white cell backgrounds, and the two cell states (live=black, dead=white).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-simulation-initialization-first-load-initial-state-so-that-exactly-50-live-cells-are-randomly-distributed-within-the-central-region-of-the-200-200-grid-with-all-other-cells-dead",
+      "title": "Update the simulation initialization (first load / initial state) so that exactly 50 live cells are randomly distributed within the central region of the 200×200 grid, with all other cells dead.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-reset-behavior-to-generate-a-new-random-initial-state-with-exactly-3000-live-cells-placed-within-the-central-region-of-the-200-200-grid-as-requested-and-reset-the-simulation-to-a-paused-not-running-state-after-reset",
+      "title": "Update the Reset behavior to generate a new random initial state with exactly 3000 live cells placed within the central region of the 200×200 grid (as requested), and reset the simulation to a paused/not-running state after reset.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-start-and-pause-controls-continue-to-work-with-the-200-200-grid-start-begins-advancing-generations-automatically-pause-stops-advancing-while-keeping-the-current-grid-state-displayed",
+      "title": "Ensure the Start and Pause controls continue to work with the 200×200 grid: Start begins advancing generations automatically; Pause stops advancing while keeping the current grid state displayed.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-keep-the-simulation-update-interval-at-0-5-seconds-and-apply-the-specified-8-neighbor-rules-each-tick-birth-on-exactly-3-neighbors-survival-on-2-or-3-death-on-0-1-or-3-ensure-rules-operate-correctly-at-grid-edges-define-and-implement-a-consistent-edge-policy",
+      "title": "Keep the simulation update interval at 0.5 seconds and apply the specified 8-neighbor rules each tick (birth on exactly 3 neighbors; survival on 2 or 3; death on 0–1 or >3). Ensure rules operate correctly at grid edges (define and implement a consistent edge policy).",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-zoom-in-out-functionality-continues-to-work-correctly-with-the-200-200-grid-while-the-simulation-is-running-or-paused",
+      "title": "Ensure the zoom in/out functionality continues to work correctly with the 200×200 grid while the simulation is running or paused.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-two-ui-controls-to-adjust-the-simulation-speed-a-faster-control-that-halves-the-current-generation-tick-interval-on-each-press-e-g-500ms-250ms-125ms-and-a-slower-control-that-doubles-the-current-tick-interval-on-each-press-e-g-250ms-500ms-1000ms",
+      "title": "Add two UI controls to adjust the simulation speed: a \"Faster\" control that halves the current generation tick interval on each press (e.g., 500ms → 250ms → 125ms …) and a \"Slower\" control that doubles the current tick interval on each press (e.g., 250ms → 500ms → 1000ms …).",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-simulation-loop-so-the-tick-interval-is-not-a-fixed-constant-and-can-be-changed-at-runtime-while-the-simulation-is-running-or-paused-without-breaking-start-pause-reset-behavior-or-the-generation-counter",
+      "title": "Update the simulation loop so the tick interval is not a fixed constant and can be changed at runtime while the simulation is running or paused, without breaking Start/Pause/Reset behavior or the generation counter.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-the-current-tick-interval-or-an-equivalent-speed-indicator-in-the-controls-panel-in-english-so-the-user-can-see-the-active-simulation-speed",
+      "title": "Display the current tick interval (or an equivalent speed indicator) in the controls panel in English so the user can see the active simulation speed.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-6",
+      "summary": "Fullscreen 200x200 raster animation with black grid lines and white background cells; live cells rendered black, dead cells white",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Initialize with 50 randomly distributed live cells within the central region of the 200x200 grid",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Reset regenerates a new random initial state of 3000 live cells within the central region",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "UI controls: Start to run the simulation, Pause to stop, Reset to regenerate initial state",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Zoom in/out functionality for the grid view; simulation updates every 0.5s applying Game-of-Life rules (birth=3, survival=2|3, death<=1 or >3)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Add speed controls (accelerate/decelerate) that adjust the generation tick rate by doubling/halving the update interval each press (e.g., 0.5s -> 0.25s on speed up; reverse on slow down)",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "2d",
+  "projectName": "Fullscreen 200×200 Game-of-Life Animation with Controls and Zoom",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

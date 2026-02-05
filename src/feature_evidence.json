@@ -1,0 +1,59 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-two-ui-controls-to-adjust-the-simulation-speed-a-faster-control-that-halves-the-current-generation-tick-interval-on-each-press-e-g-500ms-250ms-125ms-and-a-slower-control-that-doubles-the-current-tick-interval-on-each-press-e-g-250ms-500ms-1000ms",
+      "featureTitle": "Add two UI controls to adjust the simulation speed: a \"Faster\" control that halves the current generation tick interval on each press (e.g., 500ms → 250ms → 125ms …) and a \"Slower\" control that doubles the current tick interval on each press (e.g., 250ms → 500ms → 1000ms …).",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-simulation-loop-so-the-tick-interval-is-not-a-fixed-constant-and-can-be-changed-at-runtime-while-the-simulation-is-running-or-paused-without-breaking-start-pause-reset-behavior-or-the-generation-counter",
+      "featureTitle": "Update the simulation loop so the tick interval is not a fixed constant and can be changed at runtime while the simulation is running or paused, without breaking Start/Pause/Reset behavior or the generation counter.",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-display-the-current-tick-interval-or-an-equivalent-speed-indicator-in-the-controls-panel-in-english-so-the-user-can-see-the-active-simulation-speed",
+      "featureTitle": "Display the current tick interval (or an equivalent speed indicator) in the controls panel in English so the user can see the active simulation speed.",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-15"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

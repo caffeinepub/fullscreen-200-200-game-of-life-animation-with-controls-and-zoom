@@ -1,0 +1,71 @@
+{
+  "kind": "build_request",
+  "title": "Add speed controls to double/halve the simulation tick interval",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-13",
+      "text": "Add two UI controls to adjust the simulation speed: a \"Faster\" control that halves the current generation tick interval on each press (e.g., 500ms → 250ms → 125ms …) and a \"Slower\" control that doubles the current tick interval on each press (e.g., 250ms → 500ms → 1000ms …).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "perfekt. baue jetzt bitte noch einen Beschleuniger und Verlangsamer ein. Die Generation soll sich bei Beschleunigung immer um das doppelte beschleunigen. Also aus einer halben Sekunde wird eine Viertel sekunde und so weiter. Das Gleiche dann, wenn ich wieder verlangsamen möchte."
+        ]
+      },
+      "acceptanceCriteria": [
+        "The UI shows two new controls labeled in English (e.g., \"Faster\" and \"Slower\").",
+        "With the default tick interval at 500ms, pressing \"Faster\" once changes the interval to 250ms; pressing again changes it to 125ms.",
+        "Pressing \"Slower\" doubles the interval (e.g., 250ms → 500ms → 1000ms).",
+        "Speed changes are applied immediately without requiring Reset or restarting the app."
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Update the simulation loop so the tick interval is not a fixed constant and can be changed at runtime while the simulation is running or paused, without breaking Start/Pause/Reset behavior or the generation counter.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Die Generation soll sich bei Beschleunigung immer um das doppelte beschleunigen... Das Gleiche dann, wenn ich wieder verlangsamen möchte."
+        ]
+      },
+      "acceptanceCriteria": [
+        "When the simulation is running, changing speed affects how frequently generations advance (faster/slower) without freezing or resetting the grid.",
+        "When the simulation is paused, changing speed does not advance generations; after pressing Start again, the new speed is used.",
+        "Reset still stops the simulation (paused state) and resets the generation counter to 0, regardless of the current speed setting.",
+        "Generation count increments by exactly 1 per simulation tick (no skipped or double-counted generations due to speed changes)."
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "text": "Display the current tick interval (or an equivalent speed indicator) in the controls panel in English so the user can see the active simulation speed.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The controls panel shows the current speed readout (e.g., \"Tick: 0.50s\" or \"Interval: 500 ms\").",
+        "The readout updates immediately after pressing \"Faster\" or \"Slower\"."
+      ]
+    }
+  ],
+  "constraints": [
+    "Use English for any user-facing text added or changed in this task.",
+    "Do not modify files under frontend/src/components/ui or other immutable paths listed in SYSTEM_CONTEXT."
+  ],
+  "nonGoals": [
+    "Adding backend persistence or syncing simulation state to the Motoko canister.",
+    "Adding advanced speed presets, autoplay modes, or keyboard shortcuts beyond the requested faster/slower controls."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

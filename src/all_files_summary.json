@@ -1,0 +1,15 @@
+{
+  "backend/main.mo": "Empty Motoko actor with no backend logic.",
+  "feature_evidence.json": "Feature evidence report mapping three simulation-speed-related features to frontend/src/App.tsx.",
+  "frontend-file-summaries.txt": "Lists brief summaries of key frontend files including App.tsx, index.css, and useQueries.ts.",
+  "frontend/index.css": "Tailwind base stylesheet defining OKLCH color variables and dark-mode overrides.",
+  "frontend/index.html": "Base HTML page that mounts the React app and loads main.tsx.",
+  "frontend/src/App.tsx": "Main Game of Life component handling grid logic, rendering, controls, zoom, and adjustable tick interval.",
+  "frontend/src/hooks/useActor.ts": "React hook creating and refreshing a backend actor tied to Internet Identity state.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Internet Identity provider and hook managing auth client, login flow, stored identities, and status flags.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder for backend queries.",
+  "frontend/src/index.css": "Tailwind CSS variables and global styles for the frontend including light/dark themes.",
+  "frontend/src/main.tsx": "React entrypoint initializing QueryClient, InternetIdentityProvider, and rendering App.",
+  "frontend/tailwind.config.js": "Tailwind configuration enabling OKLCH color tokens, dark mode, plugins, and extended theme settings.",
+  "project_state.json": "Defines the project’s simulation requirements, UI controls, initialization/reset rules, and known deployment issues. Contains feature descriptions for a grid-based Game of Life variant with speed, zoom, and control behaviors."
+}

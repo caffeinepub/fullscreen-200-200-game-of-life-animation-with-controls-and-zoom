@@ -1,0 +1,56 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add runtime-adjustable simulation speed controls (Faster/Slower) with tick interval readout",
+  "requirements": [
+    {
+      "id": "REQ-13",
+      "summary": "Add Faster/Slower controls that halve/double the current simulation tick interval on each press.",
+      "acceptanceCriteria": [
+        "The UI shows two new controls labeled in English (e.g., \"Faster\" and \"Slower\").",
+        "With the default tick interval at 500ms, pressing \"Faster\" once changes the interval to 250ms; pressing again changes it to 125ms.",
+        "Pressing \"Slower\" doubles the interval (e.g., 250ms → 500ms → 1000ms).",
+        "Speed changes are applied immediately without requiring Reset or restarting the app."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Replace the fixed TICK_INTERVAL constant with a tick interval state (default 500ms) and add two new UI controls labeled \"Faster\" and \"Slower\" that update the interval by halving/doubling respectively on each press. Use the shadcn-ui Button component for the new controls (Verify the component's usage instructions before implementing)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Update the simulation loop to use a runtime-changeable tick interval without breaking Start/Pause/Reset or generation counting.",
+      "acceptanceCriteria": [
+        "When the simulation is running, changing speed affects how frequently generations advance (faster/slower) without freezing or resetting the grid.",
+        "When the simulation is paused, changing speed does not advance generations; after pressing Start again, the new speed is used.",
+        "Reset still stops the simulation (paused state) and resets the generation counter to 0, regardless of the current speed setting.",
+        "Generation count increments by exactly 1 per simulation tick (no skipped or double-counted generations due to speed changes)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Refactor the requestAnimationFrame-based simulation loop to reference the current tick interval at runtime (e.g., via a ref synced with state) so speed changes take effect immediately while running and are preserved while paused. Ensure Start/Pause/Reset behavior stays intact and that exactly one generation increment occurs per tick decision."
+        }
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "summary": "Show a live English readout of the current tick interval in the controls panel.",
+      "acceptanceCriteria": [
+        "The controls panel shows the current speed readout (e.g., \"Tick: 0.50s\" or \"Interval: 500 ms\").",
+        "The readout updates immediately after pressing \"Faster\" or \"Slower\"."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add an English speed readout to the existing controls panel (e.g., \"Interval: 500 ms\" or \"Tick: 0.50 s\") that is derived from the tick interval state and updates immediately when Faster/Slower is pressed."
+        }
+      ]
+    }
+  ]
+}
